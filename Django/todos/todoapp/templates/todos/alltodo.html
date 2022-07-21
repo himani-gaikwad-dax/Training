@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Todo App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body style="background-color:#89a4d2;">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+    
+    <H1 style="margin-left: 10px; margin-top: 10px; margin-bottom: 40px;">My Todos</H1>
+
+
+     {% comment %} add a todo  {% endcomment %}
+
+    <div style="width: 25rem;margin-left: 10px;">
+        <form action ="" method = "POST">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="task" class="form-label">Task</label>
+              <input type="text" class="form-control" name="task">
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label">Description</label>
+              <input type="text" class="form-control" name="description">
+            </div>
+            <button type="submit" class="btn btn-success">Add </button>
+          </form>
+    </div>
+
+    <h1 style="margin-left: 10px;margin-top:20px;margin-bottom:20px">All Todos</h1>
+    
+            {% for todo in todos %}
+          
+    <div class="card" style="width: 18rem; margin-left: 30px; margin-top: 10px;">
+        <div class="card-body">
+            <div class="container">
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-title">{{todo.task }}</h5>
+                  </div>
+                </div>
+              </div>
+          
+          <p class="card-text">{{todo.description}}</p>
+
+          <p>
+            
+            <a href="{% url 'delete' id=todo.id %}" class="btn btn-danger" style="margin-left: 10px;">Delete</a> 
+            <a href="{% url 'update' id=todo.id %}" class="btn btn-primary" style="margin-left: 10px;">Update</a>           
+
+          </p>
+          
+        </div>
+    </div>
+          </div>
+          {% endfor %}
+        
+
+
+</body>
+</html>
