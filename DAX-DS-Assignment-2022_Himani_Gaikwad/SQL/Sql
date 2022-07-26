@@ -1,0 +1,32 @@
+/*SELECT CustomerID, FirstName, LastName, City
+FROM customers 
+WHERE FirstName LIKE 'N%' OR City LIKE 'xyz'*/
+
+/*
+SELECT TrackId, Name, Composer, UnitPrice 
+FROM tracks
+WHERE UnitPrice BETWEEN 0.9 AND 1
+AND 
+Composer NOT LIKE 'T';*/
+
+/*SELECT InvoiceDate, SUM(TOTAL), AVG(TOTAL)
+FROM invoices
+GROUP BY InvoiceDate
+HAVING InvoiceDate LIKE '2012-06%' */
+
+/*SELECT TrackId, SUM(Quantity)
+FROM invoice_items
+GROUP BY TrackId
+ORDER BY TrackId, DESC;*/
+
+/*SELECT ArtistId, Name
+From artists WHERE ArtistId NOT IN(
+SELECT ArtistId from albums WHERE AlbumId NOT IN(
+SELECT AlbumId from tracks WHERE(
+TrackId In(
+SELECT TrackId FROM playlist_track)))); */
+
+
+
+
+
